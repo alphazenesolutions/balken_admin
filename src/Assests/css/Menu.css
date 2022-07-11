@@ -1,0 +1,71 @@
+.Menu_table {
+  min-height: 80vh !important;
+  max-height: 80vh !important;
+  width: 80vw !important;
+  max-width: 80vw !important;
+  overflow-y: scroll !important;
+}
+.Menu_delete_avatar {
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #f57975 !important;
+  margin-left: 10px !important;
+}
+
+.Menu_inputs_container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.Menu_inputs_container label {
+  color: #b2b4b0;
+  font-weight: 700;
+}
+
+.Menu_inputs_container input {
+  margin-top: 10px;
+  width: 90%;
+  padding: 14px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Menu_inputs_container select {
+  margin-top: 10px;
+  width: 97%;
+  padding: 14px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.Menu_inputs_container textarea {
+  margin-top: 10px;
+  width: 90%;
+  padding: 14px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* view More */
+.Menu_view_avatar {
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #f99e16b7 !important;
+  margin-right: 10px;
+}
+.Menu_view_avatar:hover,
+.Menu_delete_avatar:hover {
+  cursor: pointer;
+}
+.Menuview_container img {
+  width: 80px;
+}
+.MenuView_head {
+  font-size: 23px;
+  color: #f57975;
+  margin-top: 0px;
+  text-transform: uppercase;
+}

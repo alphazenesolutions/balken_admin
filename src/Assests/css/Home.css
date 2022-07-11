@@ -1,0 +1,240 @@
+/* swiper */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Smooch&display=swap");
+.Swiper_data {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3rem;
+  align-items: center;
+}
+.Swiper_1 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.Swiper_inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.Swiper_inputs_files {
+  display: flex;
+  flex-direction: column;
+}
+
+.Swiper_inputs_files {
+  display: none;
+}
+.Swiper_inputs input {
+  border-radius: 10px;
+  width: 180px;
+
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+.Swiper_inputs label {
+  font-weight: bold;
+  color: #555;
+}
+.Swiper_actions button {
+  padding: 0.7rem 2.5rem;
+  background-color: #f57975;
+  border: none;
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  position: relative;
+  margin-top: 10px;
+}
+.Swiper_images_upload button {
+  padding: 0.7rem 2.5rem;
+  width: 180px;
+  background-color: #8bc63f;
+  border: none;
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  position: relative;
+  margin-top: 10px;
+}
+.Swiper_results {
+  margin-top: 30px;
+  height: 450px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #555;
+  border-radius: 20px;
+}
+.HomeHeadSlide1Content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.HomeHeadSlide1Content h1 {
+  font-size: 65px;
+  font-weight: 300;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 10px;
+}
+.HomeHeadSlide1Content h2 {
+  font-size: 18px;
+  font-weight: 400;
+  word-spacing: 4px;
+  color: #8dc73f;
+  margin: 0;
+}
+.viewOurmenubtn {
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 0.9rem 2rem;
+  color: white;
+  border-radius: 30px;
+  font-weight: 900;
+  margin-top: 20px;
+  font-size: 12px;
+  margin-bottom: 60px;
+}
+
+.swiper-pagination-bullet-active {
+  color: red !important;
+}
+.swiper-pagination-bullet-active {
+  width: 20px !important;
+  border-radius: 5px !important;
+  height: 8px !important;
+}
+.Shopnow_MywishlistsContainer__OdxCp {
+  width: 450px;
+  /* background-color: #f9a018; */
+  /* background-color: #121216; */
+  max-height: 200px !important;
+  overflow-y: scroll;
+}
+.swiper-pagination-bullet-active {
+  color: red !important;
+}
+.HomeHeadSlide1 {
+  position: relative;
+}
+.wallpaper {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 20px;
+  opacity: 0.4;
+}
+/* Food Card */
+.FoodCard {
+  min-height: 85vh !important;
+  max-height: 85vh !important;
+  overflow-y: scroll !important;
+}
+.HomeBooknowCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 95%;
+  margin: auto;
+  margin-top: 30px;
+}
+.HomeBooknowCard {
+  background-color: #121216 !important;
+}
+.HomeBooknowCardHead {
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  color: #f9a016;
+}
+.HomeBooknowCardContent {
+  margin-top: 20px !important;
+  color: #a3a2a2 !important;
+  font-size: 16px !important;
+}
+.HomeBooknowCardBtn {
+  color: white !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  border-bottom: 2px solid #a30c11 !important;
+}
+.Swiper_inputs textarea {
+  border-radius: 10px;
+  width: 180px;
+
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+/* Art of cooking */
+.HomeKitchenContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #19191d;
+  align-items: center !important;
+  margin-top: 50px;
+}
+.HomeKitchenContainer img {
+  width: 100%;
+}
+.HomeKitchenContent {
+  background-color: #19191d;
+  /* margin-left: -20px; */
+
+  padding: 0 30px;
+}
+.HomeKitchenContentss {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-evenly;
+  color: white;
+  width: 80%;
+  margin: auto;
+}
+.ArtofCookingHead {
+  display: flex;
+  flex-direction: column;
+}
+.ArtofCookingWelcome {
+  font-size: 35px;
+  font-weight: 400;
+  margin: 0;
+}
+.ArtofCooking {
+  font-family: "Smooch", cursive;
+  margin: 10px 0;
+  font-size: 22px;
+  font-weight: 300;
+  color: #8dc73f;
+}
+.emptyBorder {
+  border-bottom: 4px solid #a30c11;
+  width: 60px;
+  margin: 0;
+}
+.ArtofCookingContent {
+  color: #a3a2a2;
+  line-height: 1.9;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.ArtofCookingReadMoreBtn {
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 1rem 2.5rem;
+  color: white;
+  border-radius: 30px;
+  font-weight: 400;
+  align-self: flex-start;
+}
+.Home_kitchen_inputs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}

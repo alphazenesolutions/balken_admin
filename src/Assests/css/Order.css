@@ -1,0 +1,63 @@
+.Order_table {
+  min-height: 80vh !important;
+  max-height: 80vh !important;
+  width: 80vw !important;
+  max-width: 80vw !important;
+  overflow-y: scroll !important;
+}
+.Order_edit_avatar {
+  background-color: #b4da87 !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.Order_delete_avatar {
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #f57975 !important;
+}
+.Order_view_avatar {
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #f99e16b7 !important;
+}
+.Order_view_avatar:hover,
+.Order_delete_avatar:hover,
+.Order_edit_avatar:hover {
+  cursor: pointer;
+}
+.Order_actions {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  justify-content: space-evenly;
+}
+
+.Order_edit_icon {
+  text-align: center !important;
+}
+
+.Order_delete_icon {
+  text-align: center !important;
+}
+/* view order */
+.orderview_container img {
+  width: 80px;
+}
+.orderview_head {
+  font-size: 23px;
+  color: #f57975;
+  margin-top: 0px;
+  text-transform: uppercase;
+}
+.Order_delivered_status {
+  background-color: #b4da87 !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.Order_Cancel_status {
+  background-color: #f57975 !important;
+  width: 30px !important;
+  height: 30px !important;
+}

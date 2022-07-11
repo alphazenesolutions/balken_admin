@@ -1,0 +1,38 @@
+.User_table {
+  min-height: 80vh !important;
+  max-height: 80vh !important;
+  width: 80vw !important;
+  max-width: 80vw !important;
+  overflow-y: scroll !important;
+}
+.userview_container img {
+  width: 80px;
+}
+.userview_head {
+  font-size: 23px;
+  color: #f57975;
+  margin-top: 0px;
+  text-transform: uppercase;
+}
+.user_view_avatar {
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #f99e16b7 !important;
+}
+.user_view_avatar:hover {
+  cursor: pointer;
+}
+.User_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.User_name h1 {
+  margin-bottom: 0 !important;
+}
+.user_avatar {
+  background-color: #b4da87 !important;
+  width: 30px !important;
+  margin-left: 20px !important;
+  height: 30px !important;
+}

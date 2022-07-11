@@ -1,0 +1,118 @@
+/* Login */
+.Login_container {
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  height: 100vh;
+}
+.login_right {
+  background-image: linear-gradient(to right bottom, #a30c119d, #8cc73fa2),
+    url("../img/login.jpg");
+  background-position: top;
+  object-fit: fill;
+  background-size: contain;
+  clip-path: circle(85% at 80% 0%);
+}
+/* login_left */
+.Login_left_head {
+  display: flex;
+  flex-direction: column;
+}
+.Login_left_head img {
+  height: 150px;
+}
+.Login_left_head h1 {
+  color: #777;
+}
+.login_left {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.Login_left_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+.Login_inputs {
+  width: 80%;
+  margin: auto;
+}
+.Login_inputs button {
+  padding: 0.7rem 2.5rem;
+  background-image: linear-gradient(to right bottom, #f57975, #b4da87);
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 20px;
+  border-radius: 40px;
+  position: relative;
+}
+.Login_inputs button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  z-index: -1;
+  color: white;
+  transition: all 0.4s;
+  background-image: linear-gradient(to right bottom, #f57975, #b4da87);
+}
+.Login_inputs button:hover {
+  cursor: pointer;
+}
+.Login_inputs button:hover::after {
+  background-image: linear-gradient(to right bottom, #f57975, #b4da87);
+  transform: scaleX(1.4) scaleY(1.8);
+  opacity: 0;
+}
+.inputs_container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.inputs_container label {
+  color: #b2b4b0;
+  font-weight: 700;
+}
+.inputs_container input {
+  margin-top: 10px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.Forget_password {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Rember_me {
+  display: flex;
+  align-items: center;
+}
+.Forget_password p {
+  color: #b2b4b0;
+}
+.dont_have_acc {
+  color: #b2b4b0;
+  margin-top: 40px !important;
+}
+.click_here {
+  color: #ee7f6e;
+}
+.click_here button:hover {
+  cursor: pointer;
+}
