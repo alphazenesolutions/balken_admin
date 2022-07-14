@@ -60,7 +60,6 @@ const Menu = () => {
   const [menudata, setmenudata] = React.useState([]);
   const [singlemenudata, setsinglemenudata] = React.useState([]);
   const handleChangenew = async (e) => {
-    console.log(e.target.files);
     e.preventDefault();
     setfile(e.target.files);
   };
@@ -80,7 +79,6 @@ const Menu = () => {
         transition: Slide,
       });
     } else {
-      console.log(file[0]);
       let file11 = new Promise((resolve, reject) => {
         var storageRef = firebase.storage().ref("profile/" + file[0].name);
         storageRef.put(file[0]).then(function (snapshot) {
@@ -116,7 +114,6 @@ const Menu = () => {
         var createcategory = await axios
           .post(`${process.env.REACT_APP_SERVER}/menu/create`, data)
           .then((res) => {
-            console.log(res.data);
             return res.data;
           });
 

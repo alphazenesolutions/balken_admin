@@ -89,7 +89,6 @@ const Dashboard = () => {
         var date = moment(allorder[i].createdAt).format("DD-MM-YYYY");
         var lastmonth = moment().subtract(1, "month").format("MM");
         var month = moment(allorder[i].createdAt).format("MM");
-        console.log(lastmonth, month);
         if (todaydate === date) {
           todayprice.push(Number(allorder[i].price));
         }

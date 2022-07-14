@@ -1,31 +1,41 @@
 /* swiper */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Smooch&display=swap");
+
+.Swiper_page_container {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 .Swiper_data {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 3rem;
   align-items: center;
 }
+
 .Swiper_1 {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
+
 .Swiper_inputs {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 10px;
 }
+
 .Swiper_inputs_files {
   display: flex;
   flex-direction: column;
 }
 
 .Swiper_inputs_files {
-  display: none;
+  /* display: none; */
 }
+
 .Swiper_inputs input {
   border-radius: 10px;
   width: 180px;
@@ -34,10 +44,12 @@
   padding: 10px;
   border: 1px solid lightgray;
 }
+
 .Swiper_inputs label {
   font-weight: bold;
   color: #555;
 }
+
 .Swiper_actions button {
   padding: 0.7rem 2.5rem;
   background-color: #f57975;
@@ -49,6 +61,7 @@
   position: relative;
   margin-top: 10px;
 }
+
 .Swiper_images_upload button {
   padding: 0.7rem 2.5rem;
   width: 180px;
@@ -61,6 +74,7 @@
   position: relative;
   margin-top: 10px;
 }
+
 .Swiper_results {
   margin-top: 30px;
   height: 450px !important;
@@ -68,6 +82,7 @@
   background-color: #555;
   border-radius: 20px;
 }
+
 .HomeHeadSlide1Content {
   display: flex;
   align-items: center;
@@ -78,6 +93,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .HomeHeadSlide1Content h1 {
   font-size: 65px;
   font-weight: 300;
@@ -85,6 +101,7 @@
   font-family: "Poppins", sans-serif;
   margin-bottom: 10px;
 }
+
 .HomeHeadSlide1Content h2 {
   font-size: 18px;
   font-weight: 400;
@@ -92,6 +109,7 @@
   color: #8dc73f;
   margin: 0;
 }
+
 .viewOurmenubtn {
   background-color: transparent;
   border: 2px solid white;
@@ -107,11 +125,13 @@
 .swiper-pagination-bullet-active {
   color: red !important;
 }
+
 .swiper-pagination-bullet-active {
   width: 20px !important;
   border-radius: 5px !important;
   height: 8px !important;
 }
+
 .Shopnow_MywishlistsContainer__OdxCp {
   width: 450px;
   /* background-color: #f9a018; */
@@ -119,12 +139,15 @@
   max-height: 200px !important;
   overflow-y: scroll;
 }
+
 .swiper-pagination-bullet-active {
   color: red !important;
 }
+
 .HomeHeadSlide1 {
   position: relative;
 }
+
 .wallpaper {
   width: 100%;
   height: 450px;
@@ -132,12 +155,14 @@
   border-radius: 20px;
   opacity: 0.4;
 }
+
 /* Food Card */
 .FoodCard {
   min-height: 85vh !important;
   max-height: 85vh !important;
   overflow-y: scroll !important;
 }
+
 .HomeBooknowCards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -145,25 +170,30 @@
   margin: auto;
   margin-top: 30px;
 }
+
 .HomeBooknowCard {
   background-color: #121216 !important;
 }
+
 .HomeBooknowCardHead {
   font-size: 22px !important;
   font-weight: 500 !important;
   color: #f9a016;
 }
+
 .HomeBooknowCardContent {
   margin-top: 20px !important;
   color: #a3a2a2 !important;
   font-size: 16px !important;
 }
+
 .HomeBooknowCardBtn {
   color: white !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   border-bottom: 2px solid #a30c11 !important;
 }
+
 .Swiper_inputs textarea {
   border-radius: 10px;
   width: 180px;
@@ -172,6 +202,7 @@
   padding: 10px;
   border: 1px solid lightgray;
 }
+
 /* Art of cooking */
 .HomeKitchenContainer {
   display: grid;
@@ -180,15 +211,18 @@
   align-items: center !important;
   margin-top: 50px;
 }
+
 .HomeKitchenContainer img {
   width: 100%;
 }
+
 .HomeKitchenContent {
   background-color: #19191d;
   /* margin-left: -20px; */
 
   padding: 0 30px;
 }
+
 .HomeKitchenContentss {
   display: flex;
   flex-direction: column;
@@ -198,15 +232,18 @@
   width: 80%;
   margin: auto;
 }
+
 .ArtofCookingHead {
   display: flex;
   flex-direction: column;
 }
+
 .ArtofCookingWelcome {
   font-size: 35px;
   font-weight: 400;
   margin: 0;
 }
+
 .ArtofCooking {
   font-family: "Smooch", cursive;
   margin: 10px 0;
@@ -214,17 +251,20 @@
   font-weight: 300;
   color: #8dc73f;
 }
+
 .emptyBorder {
   border-bottom: 4px solid #a30c11;
   width: 60px;
   margin: 0;
 }
+
 .ArtofCookingContent {
   color: #a3a2a2;
   line-height: 1.9;
   font-size: 14px;
   margin-bottom: 20px;
 }
+
 .ArtofCookingReadMoreBtn {
   background-color: transparent;
   border: 2px solid white;
@@ -234,7 +274,304 @@
   font-weight: 400;
   align-self: flex-start;
 }
+
 .Home_kitchen_inputs {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+}
+
+/* Today_spcl */
+.Tdy_spcl_data {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 3rem;
+  align-items: center;
+}
+
+.Tdy_spcl_actions button {
+  padding: 0.7rem 2.5rem;
+  background-color: #f57975;
+  border: none;
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  position: relative;
+}
+
+.tdy_spcl_inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.tdy_spcl_inputs input {
+  border-radius: 10px;
+  width: 180px;
+
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.tdy_spcl_inputs label {
+  font-weight: bold;
+  color: #555;
+}
+
+.tdy_spcl_inputs textarea {
+  border-radius: 10px;
+  width: 180px;
+
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.food_results {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background-color: white;
+  top: 50px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1.5px 5px 0 rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+  left: 0;
+  z-index: 10;
+  padding: 5px 20px;
+}
+
+.food_resultsnew {
+  position: absolute;
+  width: 120%;
+  height: 200px;
+  border-radius: 10px;
+  background-color: white;
+  top: 50px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1.5px 5px 0 rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+  left: 0;
+  z-index: 10;
+  padding: 5px 20px;
+}
+
+.food_results_li {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  color: #b0b3ae !important;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.food_results_li:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.HomeSpecialCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3rem;
+  margin-top: 30px;
+}
+
+.HomeSpecialCard {
+  background-color: transparent !important;
+}
+
+.HomeSpecialCardHead {
+  font-weight: 600 !important;
+  color: #b0b3ae !important;
+  margin: 20px 0 !important;
+  font-size: 20px !important;
+  text-transform: uppercase;
+}
+
+.HomeSpecialCardPrice {
+  color: #b0b3ae !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+}
+
+.tdy_spcl_preview {
+  margin-top: 40px;
+}
+
+/* home_spcl_day */
+.special_day_result {
+  height: 500px;
+  background-color: #121216;
+}
+
+.HomecountContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.HomecountNumbers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 90%;
+}
+
+.HomecountInputContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.HomecountHead h1 {
+  font-size: 34px;
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  margin: 0;
+}
+
+.HomecountTime {
+  font-size: 100px;
+  color: #8dc73f;
+  font-weight: 400 !important;
+  margin: 0;
+  margin-left: -10px;
+}
+
+.HomecountTim {
+  font-size: 34px;
+  color: white;
+  letter-spacing: -1px;
+}
+
+.HomecountNumber {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Home_spcl_day_inputs {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 30px;
+}
+
+.special_day-date {
+  color: #b0b3ae;
+  float: right;
+  margin-right: 20px;
+  font-weight: 900;
+}
+
+/* Home menu */
+.home_menu_results {
+  background-color: #121216;
+  padding: 30px;
+}
+
+.OurmenuHomeActions button {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 0.7rem 1.6rem;
+  color: white;
+  font-weight: 400;
+  margin-right: 10px;
+}
+
+.OurmenuHomeActionsActive {
+  border: 2px solid #a30c11 !important;
+}
+
+.OurmenuHomeDishes {
+  width: 85%;
+  margin: auto;
+  grid-gap: 6rem;
+}
+
+.OurmenuHomeDishesLeft {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.MenuDishCards {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  width: 90%;
+  grid-gap: 1rem;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.MenuDishCards:hover {
+  cursor: pointer;
+}
+
+.MenuDishCards img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.MenuDishCardHead {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.MenuDishCardHead h1 {
+  font-weight: 400;
+  font-size: 16px;
+  color: #8bc63f;
+}
+
+.MenuDishCardHead p {
+  color: rgb(143, 141, 141);
+  letter-spacing: 3px;
+  margin-right: -50px;
+  font-size: 15px;
+}
+
+.MenuDishCardPrice {
+  color: #8bc63f;
+  font-size: 16px;
+}
+
+.MenuDishCarddishContent {
+  text-align: justify;
+  line-height: 1.9;
+  margin-top: 10px;
+  font-size: 10px;
+  color: #b0b3ae;
+}
+
+.home_menu_add {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Category_add_avatar {
+  background-color: #f57975 !important;
+}
+
+.Category_add_avatar:hover {
+  cursor: pointer;
+}
+
+.Menu_container {
+  margin-bottom: 20px;
+}
+
+.Menu_container label {
+  margin-left: 10px;
+  color: #b0b3ae;
+  font-weight: 600;
 }

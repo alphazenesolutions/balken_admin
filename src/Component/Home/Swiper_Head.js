@@ -14,65 +14,72 @@ const Swiper_Head = () => {
   function getFile() {
     document.getElementById("upfile").click();
   }
-
+  const SubmitHandler = () => {
+    var Heading_1 = document.getElementById("swiper_head_1").value;
+    var Heading_2 = document.getElementById("swiper_head_2").value;
+    var Heading_3 = document.getElementById("swiper_head_3").value;
+    var Sub_Heading_1 = document.getElementById("swiper_sub_head_1").value;
+    var Sub_Heading_2 = document.getElementById("swiper_sub_head_2").value;
+    var Sub_Heading_3 = document.getElementById("swiper_sub_head_3").value;
+    var data = {
+      Heading_1: Heading_1,
+      Heading_2: Heading_2,
+      Heading_3: Heading_3,
+      Sub_Heading_1: Sub_Heading_1,
+      Sub_Heading_2: Sub_Heading_2,
+      Sub_Heading_3: Sub_Heading_3,
+    };
+    console.log(data);
+  };
   return (
-    <div>
+    <div className="Swiper_page_container">
       <h1>Swiper</h1>
       <div className="Swiper_page">
         <div className="Swiper_data">
           <div className="Swiper_1">
             <div className="Swiper_inputs">
               <label>Swiper Heading</label>
-              <input />
+              <input id="swiper_head_1" />
             </div>
             <div className="Swiper_inputs">
               <label>Swiper Sub Heading</label>
-              <input />
+              <input id="swiper_sub_head_1" />
             </div>
-            <div className="Swiper_inputs_files">
+            <div className="Swiper_inputs">
               <label>Swiper Images</label>
               <input id="upfile" type="file" multiple />
-            </div>
-            <div className="Swiper_images_upload">
-              <button onClick={getFile}>Upload</button>
             </div>
           </div>
           <div className="Swiper_1">
             <div className="Swiper_inputs">
               <label>Swiper Heading</label>
-              <input />
+              <input id="swiper_head_2" />
             </div>
             <div className="Swiper_inputs">
               <label>Swiper Sub Heading</label>
-              <input />
+              <input id="swiper_sub_head_2" />
             </div>
-            <div className="Swiper_inputs_files">
+            <div className="Swiper_inputs">
               <label>Swiper Images</label>
               <input id="upfile" type="file" multiple />
-            </div>
-            <div className="Swiper_images_upload">
-              <button onClick={getFile}>Upload</button>
             </div>
           </div>
           <div className="Swiper_1">
             <div className="Swiper_inputs">
               <label>Swiper Heading</label>
-              <input />
+              <input id="swiper_head_3" />
             </div>
             <div className="Swiper_inputs">
               <label>Swiper Sub Heading</label>
-              <input />
+              <input id="swiper_sub_head_3" />
             </div>
-            <div className="Swiper_inputs_files">
+            <div className="Swiper_inputs">
               <label>Swiper Images</label>
               <input id="upfile" type="file" multiple />
-            </div>
-            <div className="Swiper_images_upload">
-              <button onClick={getFile}>Upload</button>
             </div>
           </div>
           <div className="Swiper_actions">
-            <button>Apply</button>
+            <button onClick={SubmitHandler}>Apply</button>
           </div>
         </div>
         <div className="Swiper_results">

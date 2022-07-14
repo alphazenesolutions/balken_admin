@@ -32,7 +32,7 @@ const style = {
   p: 4,
 };
 
-const Category = () => {
+const Tags = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -40,12 +40,7 @@ const Category = () => {
   const addCategory = () => {
     handleOpen();
   };
-  const [file, setfile] = React.useState(null);
   const [categorydata, setcategorydata] = React.useState([]);
-  const handleChangenew = async (e) => {
-    e.preventDefault();
-    setfile(e.target.files);
-  };
   const createbtn = async () => {
     var name = document.getElementById("name").value;
     if (name.length === 0) {
@@ -54,38 +49,20 @@ const Category = () => {
         transition: Slide,
       });
     } else {
-      let file11 = new Promise((resolve, reject) => {
-        var storageRef = firebase.storage().ref("profile/" + file[0].name);
-        storageRef.put(file[0]).then(function (snapshot) {
-          storageRef.getDownloadURL().then(function (url) {
-            //img download link ah ketakiradhu
-            setTimeout(() => resolve(url), 1000);
-          });
-        });
+      toast.info("Please Wait...", {
+        autoClose: 5000,
+        transition: Slide,
       });
-      var imgurl = await file11;
-      if (imgurl === null) {
-        toast.info("Profile Is Required...", {
-          autoClose: 5000,
-          transition: Slide,
+      var data = {
+        tag: name,
+      };
+      var createcategory = await axios
+        .post(`${process.env.REACT_APP_SERVER}/tags/create`, data)
+        .then((res) => {
+          return res.data;
         });
-      } else {
-        toast.info("Please Wait...", {
-          autoClose: 5000,
-          transition: Slide,
-        });
-        var data = {
-          name: name,
-          img: imgurl,
-        };
-        var createcategory = await axios
-          .post(`${process.env.REACT_APP_SERVER}/category/create`, data)
-          .then((res) => {
-            return res.data;
-          });
-        if (createcategory !== null) {
-          window.location.reload();
-        }
+      if (createcategory !== null) {
+        window.location.reload();
       }
     }
   };
@@ -94,14 +71,13 @@ const Category = () => {
   }, []);
   const getcategorydata = async () => {
     var allcategorydata = await axios
-      .get(`${process.env.REACT_APP_SERVER}/category/viewall`)
+      .get(`${process.env.REACT_APP_SERVER}/tags/viewall`)
       .then((res) => {
         return res.data;
       });
     setcategorydata(allcategorydata);
   };
   const [name, setname] = React.useState(null);
-  const [imageurl, setimageurl] = React.useState(null);
   const [editoption, seteditoption] = React.useState(null);
   const [categoryid, setcategoryid] = React.useState(null);
   const editbtn = async (e) => {
@@ -110,8 +86,7 @@ const Category = () => {
     });
     if (singledata.length !== 0) {
       handleOpen();
-      setname(singledata[0].name);
-      setimageurl(singledata[0].img);
+      setname(singledata[0].tag);
       seteditoption(true);
       setcategoryid(singledata[0].id);
     }
@@ -119,29 +94,17 @@ const Category = () => {
   const updatebtn = async () => {
     var name = document.getElementById("name").value;
     // var discount = document.getElementById("discount").value
-    if (file !== null) {
-      let file11 = new Promise((resolve, reject) => {
-        var storageRef = firebase.storage().ref("profile/" + file[0].name);
-        storageRef.put(file[0]).then(function (snapshot) {
-          storageRef.getDownloadURL().then(function (url) {
-            //img download link ah ketakiradhu
-            setTimeout(() => resolve(url), 1000);
-          });
-        });
-      });
-      var imgurl = await file11;
-    }
+
     toast.info("Please Wait...", {
       autoClose: 5000,
       transition: Slide,
     });
     var data = {
-      name: name,
-      img: imgurl === undefined ? imageurl : imgurl,
+      tag: name,
       id: categoryid,
     };
     var createcategory = await axios
-      .post(`${process.env.REACT_APP_SERVER}/category/update`, data)
+      .post(`${process.env.REACT_APP_SERVER}/tags/update`, data)
       .then((res) => {
         return res.data;
       });
@@ -154,7 +117,7 @@ const Category = () => {
       testtid: e.target.id,
     };
     var deletemenu = await axios
-      .post(`${process.env.REACT_APP_SERVER}/category/destroy`, data)
+      .post(`${process.env.REACT_APP_SERVER}/tags/destroy`, data)
       .then((res) => {
         return res.data;
       });
@@ -164,7 +127,7 @@ const Category = () => {
   };
   return (
     <div className="">
-      <h2>Category</h2>
+      <h2>Tags</h2>
       <TableContainer className="Category_table" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -172,11 +135,9 @@ const Category = () => {
               <TableCell className="Category_table_head" align="center">
                 S. No
               </TableCell>
+
               <TableCell className="Category_table_head" align="center">
-                Image
-              </TableCell>
-              <TableCell className="Category_table_head" align="center">
-                Category Name
+                Tag Name
               </TableCell>
               <TableCell className="Category_table_head" align="center">
                 Action
@@ -186,51 +147,43 @@ const Category = () => {
           <TableBody>
             {categorydata.length !== 0
               ? categorydata.map((data, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell align="center" component="th" scope="row">
-                      {index + 1}
-                    </TableCell>
+                <TableRow
+                  key={index}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="center" component="th" scope="row">
+                    {index + 1}
+                  </TableCell>
 
-                    <TableCell align="center">
-                      <center>
+                  <TableCell align="center">{data.tag}</TableCell>
+                  <TableCell align="center">
+                    <center>
+                      <div className="Category_actions">
                         <Avatar
-                          className="Category_table_img"
-                          src={data.img}
-                        ></Avatar>
-                      </center>
-                    </TableCell>
-                    <TableCell align="center">{data.name}</TableCell>
-                    <TableCell align="center">
-                      <center>
-                        <div className="Category_actions">
-                          <Avatar
-                            className="Category_edit_avatar"
+                          className="Category_edit_avatar"
+                          id={data.id}
+                          onClick={editbtn}
+                        >
+                          <ModeEditOutlinedIcon
+                            className="Category_edit_icon"
                             id={data.id}
-                            onClick={editbtn}
-                          >
-                            <ModeEditOutlinedIcon
-                              className="Category_edit_icon"
-                              id={data.id}
-                            />
-                          </Avatar>
-                          <Avatar
-                            className="Category_delete_avatar"
+                          />
+                        </Avatar>
+                        <Avatar
+                          className="Category_delete_avatar"
+                          id={data.id}
+                          onClick={deletebtn}
+                        >
+                          <DeleteOutlineIcon
+                            className="Category_delete_icon"
                             id={data.id}
-                            onClick={deletebtn}
-                          >
-                            <DeleteOutlineIcon
-                              className="Category_delete_icon"
-                              id={data.id}
-                            />
-                          </Avatar>
-                        </div>
-                      </center>
-                    </TableCell>
-                  </TableRow>
-                ))
+                          />
+                        </Avatar>
+                      </div>
+                    </center>
+                  </TableCell>
+                </TableRow>
+              ))
               : null}
           </TableBody>
         </Table>
@@ -252,20 +205,16 @@ const Category = () => {
               <img src={logo} alt="balken" />
             </center>
             <center>
-              <h1 className="add_category_head">Add Category</h1>
+              <h1 className="add_category_head">Add Tag</h1>
             </center>
             <div className="add_category_inputs">
               <div className="Category_inputs_container">
-                <label>Category Name</label>
+                <label>Tag Name</label>
                 <input
                   placeholder="Enter the category name"
                   defaultValue={name}
                   id="name"
                 />
-              </div>
-              <div className="Category_inputs_container">
-                <label>Category Image</label>
-                <input type="file" onChange={handleChangenew} />
               </div>
               <center>
                 {editoption === true ? (
@@ -293,4 +242,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Tags;

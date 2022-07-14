@@ -55,6 +55,14 @@
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.Category_inputs_container textarea {
+  margin-top: 10px;
+  width: 90%;
+  padding: 14px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 .Category_inputs_container select {
   margin-top: 10px;

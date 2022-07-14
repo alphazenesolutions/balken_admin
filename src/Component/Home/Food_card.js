@@ -26,12 +26,9 @@ const Food_card = () => {
               <label>Card Description</label>
               <textarea rows={5} />
             </div>
-            <div className="Swiper_inputs_files">
+            <div className="Swiper_inputs">
               <label>Swiper Images</label>
               <input id="upfile" type="file" multiple />
-            </div>
-            <div className="Swiper_images_upload">
-              <button onClick={getFile}>Upload</button>
             </div>
           </div>
           <div className="Swiper_1">
@@ -43,12 +40,9 @@ const Food_card = () => {
               <label>Card Description</label>
               <textarea rows={5} />
             </div>
-            <div className="Swiper_inputs_files">
+            <div className="Swiper_inputs">
               <label>Swiper Images</label>
               <input id="upfile" type="file" multiple />
-            </div>
-            <div className="Swiper_images_upload">
-              <button onClick={getFile}>Upload</button>
             </div>
           </div>
           <div className="Swiper_1">
@@ -60,12 +54,9 @@ const Food_card = () => {
               <label>Card Description</label>
               <textarea rows={5} />
             </div>
-            <div className="Swiper_inputs_files">
+            <div className="Swiper_inputs">
               <label>Swiper Images</label>
               <input id="upfile" type="file" multiple />
-            </div>
-            <div className="Swiper_images_upload">
-              <button onClick={getFile}>Upload</button>
             </div>
           </div>
 

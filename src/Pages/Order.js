@@ -59,7 +59,6 @@ const Userlist = () => {
       });
     }
     setuserlist(finaldata);
-    console.log(finaldata);
   };
   const changestatus = async (e) => {
     var data = {
@@ -103,7 +102,7 @@ const Userlist = () => {
       handleOpen();
     }
   };
-  console.log(singleuser);
+
   return (
     <div>
       <Stack spacing={10} direction="row">

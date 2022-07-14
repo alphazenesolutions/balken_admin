@@ -23,13 +23,11 @@ const Welcome_to_balken = () => {
             <label>Description</label>
             <input />
           </div>
-          <div className="Swiper_inputs_files">
+          <div className="Swiper_inputs">
             <label>Swiper Images</label>
             <input id="upfile" type="file" multiple />
           </div>
-          <div className="Swiper_images_upload">
-            <button onClick={getFile}>Upload</button>
-          </div>
+
           <div className="Swiper_actions">
             <button>Apply</button>
           </div>

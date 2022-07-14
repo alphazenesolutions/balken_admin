@@ -17,6 +17,8 @@ import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 import GradeIcon from "@mui/icons-material/Grade";
 import CollectionsIcon from "@mui/icons-material/Collections";
+import StyleIcon from "@mui/icons-material/Style";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 const Sidebar = () => {
   const [isbigbar, setisbigbar] = useState(true);
   const changeBar = () => {
@@ -105,11 +107,39 @@ const Sidebar = () => {
                 className="navlinkli"
                 activeClassName="activenavlink"
                 exact
+                href="/blog"
+              >
+                <PostAddIcon className="iconspan" />
+                {isbigbar ? (
+                  <span className="spanname animate__backInLeft">Blogs</span>
+                ) : null}
+              </a>
+            </li>
+            <li>
+              <span id="border"></span>
+              <a
+                className="navlinkli"
+                activeClassName="activenavlink"
+                exact
                 href="/Category"
               >
                 <CategoryOutlinedIcon className="iconspan" />
                 {isbigbar ? (
                   <span className="spanname animate__backInLeft">Category</span>
+                ) : null}
+              </a>
+            </li>
+            <li>
+              <span id="border"></span>
+              <a
+                className="navlinkli"
+                activeClassName="activenavlink"
+                exact
+                href="/tags"
+              >
+                <StyleIcon className="iconspan" />
+                {isbigbar ? (
+                  <span className="spanname animate__backInLeft">Tags</span>
                 ) : null}
               </a>
             </li>
@@ -267,7 +297,7 @@ const Sidebar = () => {
                   className="navlinkli_H"
                   activeClassName="activenavlink"
                   exact
-                  href="/Menu"
+                  href="/tdyspcl"
                 >
                   <span className="iconspan_H">
                     <GradeIcon />
@@ -285,7 +315,7 @@ const Sidebar = () => {
                   className="navlinkli_H"
                   activeClassName="activenavlink"
                   exact
-                  href="/Order"
+                  href="/homemenu"
                 >
                   <span className="iconspan_H">
                     <RestaurantMenuIcon />
@@ -303,7 +333,7 @@ const Sidebar = () => {
                   className="navlinkli_H"
                   activeClassName="activenavlink"
                   exact
-                  href="/Users"
+                  href="/specialday"
                 >
                   <HourglassTopIcon className="iconspan_H" />
                   {isbigbar ? (
@@ -313,7 +343,7 @@ const Sidebar = () => {
                   ) : null}
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <span id="border"></span>
                 <a
                   className="navlinkli_H"
@@ -328,7 +358,7 @@ const Sidebar = () => {
                     </span>
                   ) : null}
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </motion.div>
