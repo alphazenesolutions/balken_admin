@@ -1,11 +1,146 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../Assests/css/Home.css";
 import Kitchen from "../../Assests/img/kitchen.jpeg";
+import axios from "axios";
+import { firebase } from "../../database/firebase";
+import { toast, Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Welcome_to_balken = () => {
-  function getFile() {
-    document.getElementById("upfile").click();
+  const [update, setupdate] = useState(false)
+  const [updateid, setupdateid] = useState(null)
+  const [aboutdata, setaboutdata] = useState([])
+  const applybtn = async () => {
+    var heading = document.getElementById("heading").value
+    var subheading = document.getElementById("subheading").value
+    var description = document.getElementById("description").value
+    var file = document.getElementById("upfile").files
+    if (heading.length === 0) {
+      toast.error("Heading Required...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+    } else if (subheading.length === 0) {
+      toast.error("Sub Heading Required...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+    } else if (description.length === 0) {
+      toast.error("Description Required...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+    } else if (file[0] === undefined) {
+      toast.error("Image Required...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+    } else {
+      toast.info("Please Wait...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+      let file11 = new Promise((resolve, reject) => {
+        var storageRef = firebase.storage().ref("profile/" + file[0].name);
+        storageRef.put(file[0]).then(function (snapshot) {
+          storageRef.getDownloadURL().then(function (url) {
+            //img download link ah ketakiradhu
+            setTimeout(() => resolve(url), 1000);
+          });
+        });
+      });
+      var imgurl = await file11;
+      var data = {
+        img: imgurl,
+        heading: heading,
+        subheading: subheading,
+        description: description
+      }
+      var createcategory = await axios
+        .post(`${process.env.REACT_APP_SERVER}/about/create`, data)
+        .then((res) => {
+          return res.data;
+        });
+
+      if (createcategory !== null) {
+        window.location.reload();
+      }
+    }
   }
+  useEffect(() => {
+    getaboutdata()
+  }, [])
+  const getaboutdata = async () => {
+    var allaboutdata = await axios.get(`${process.env.REACT_APP_SERVER}/about/viewall`).then((res) => {
+      return res.data;
+    });
+    if (allaboutdata.length !== 0) {
+      setupdate(true)
+      document.getElementById("heading").value = allaboutdata[0].heading
+      document.getElementById("subheading").value = allaboutdata[0].subheading
+      document.getElementById("description").value = allaboutdata[0].description
+      setupdateid(allaboutdata[0].id)
+      setaboutdata(allaboutdata)
+    }
+  }
+  const updatebtn = async () => {
+    var heading = document.getElementById("heading").value
+    var subheading = document.getElementById("subheading").value
+    var description = document.getElementById("description").value
+    var file = document.getElementById("upfile").files
+    if (heading.length === 0) {
+      toast.error("Heading Required...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+    } else if (subheading.length === 0) {
+      toast.error("Sub Heading Required...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+    } else if (description.length === 0) {
+      toast.error("Description Required...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+    } else if (file[0] === undefined) {
+      toast.error("Image Required...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+    } else {
+      toast.info("Please Wait...", {
+        autoClose: 5000,
+        transition: Slide,
+      });
+      let file11 = new Promise((resolve, reject) => {
+        var storageRef = firebase.storage().ref("profile/" + file[0].name);
+        storageRef.put(file[0]).then(function (snapshot) {
+          storageRef.getDownloadURL().then(function (url) {
+            //img download link ah ketakiradhu
+            setTimeout(() => resolve(url), 1000);
+          });
+        });
+      });
+      var imgurl = await file11;
+      var data = {
+        img: imgurl,
+        heading: heading,
+        subheading: subheading,
+        description: description,
+        id: updateid
+      }
+      var createcategory = await axios
+        .post(`${process.env.REACT_APP_SERVER}/about/update`, data)
+        .then((res) => {
+          return res.data;
+        });
+      if (createcategory !== null) {
+        window.location.reload();
+      }
+    }
+  }
+  console.log(aboutdata)
   return (
     <div>
       <h1>About Balken</h1>
@@ -13,48 +148,46 @@ const Welcome_to_balken = () => {
         <div className="Home_kitchen_inputs">
           <div className="Swiper_inputs">
             <label>Heading</label>
-            <input />
+            <input id="heading" />
           </div>
           <div className="Swiper_inputs">
             <label>Sub Heading</label>
-            <input />
+            <input id="subheading" />
           </div>
           <div className="Swiper_inputs">
             <label>Description</label>
-            <input />
+            <input id="description" />
           </div>
           <div className="Swiper_inputs">
-            <label>Swiper Images</label>
-            <input id="upfile" type="file" multiple />
+            <label> Images</label>
+            <input id="upfile" type="file" />
           </div>
 
           <div className="Swiper_actions">
-            <button>Apply</button>
+            {update === true ? <button onClick={updatebtn}>Apply</button> : <button onClick={applybtn}>Apply</button>}
+
           </div>
         </div>
-        <div className="HomeKitchenContainer">
-          <img src={Kitchen} alt="" />
-          <div className="HomeKitchenContent">
-            <div className="HomeKitchenContentss">
-              <div className="ArtofCookingHead">
-                <h1 className="ArtofCookingWelcome">WELCOME TO BALKEN.</h1>
-                <p className="ArtofCooking">The Art of Cooking</p>
-                <p className="emptyBorder"></p>
+        {aboutdata.length !== 0 ?
+          <div className="HomeKitchenContainer">
+            <img src={aboutdata[0].img} alt="" />
+            <div className="HomeKitchenContent">
+              <div className="HomeKitchenContentss">
+                <div className="ArtofCookingHead">
+                  <h1 className="ArtofCookingWelcome">{aboutdata[0].heading}</h1>
+                  <p className="ArtofCooking">{aboutdata[0].subheading}</p>
+                  <p className="emptyBorder"></p>
+                </div>
+                <p className="ArtofCookingContent">
+                  {aboutdata[0].description}
+                </p>
+                {/* <button className="ArtofCookingReadMoreBtn">READ MORE</button> */}
               </div>
-              <p className="ArtofCookingContent">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset
-              </p>
-              <button className="ArtofCookingReadMoreBtn">READ MORE</button>
             </div>
-          </div>
-        </div>
+          </div> : null}
+
       </div>
+      <ToastContainer />
     </div>
   );
 };

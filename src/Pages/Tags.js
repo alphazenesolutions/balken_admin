@@ -211,7 +211,7 @@ const Tags = () => {
               <div className="Category_inputs_container">
                 <label>Tag Name</label>
                 <input
-                  placeholder="Enter the category name"
+                  placeholder="Enter the Tag"
                   defaultValue={name}
                   id="name"
                 />

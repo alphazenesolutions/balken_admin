@@ -57,6 +57,7 @@ const Menu = () => {
   };
   const [file, setfile] = React.useState(null);
   const [categorydata, setcategorydata] = React.useState([]);
+  const [tagdata, settagdata] = React.useState([]);
   const [menudata, setmenudata] = React.useState([]);
   const [singlemenudata, setsinglemenudata] = React.useState([]);
   const handleChangenew = async (e) => {
@@ -71,8 +72,8 @@ const Menu = () => {
     var quantity = document.getElementById("quantity").value;
     var type = document.getElementById("type").value;
     var category = document.getElementById("category").value;
-    // var tag = document.getElementById("tag").value
-    // var discount = document.getElementById("discount").value
+    var tag = document.getElementById("tag").value
+    var discount = document.getElementById("discount").value
     if (foodname.length === 0) {
       toast.error("Food Name Email !", {
         autoClose: 2000,
@@ -108,8 +109,8 @@ const Menu = () => {
           type: type === "Veg" ? 0 : 1,
           foodimg: imgurl,
           category: category,
-          tag: null,
-          discount: null,
+          tag: tag,
+          discount: discount,
         };
         var createcategory = await axios
           .post(`${process.env.REACT_APP_SERVER}/menu/create`, data)
@@ -139,8 +140,16 @@ const Menu = () => {
         return res.data;
       });
     setmenudata(allmenudata);
+    var alltagdata = await axios
+      .get(`${process.env.REACT_APP_SERVER}/tags/viewall`)
+      .then((res) => {
+        return res.data;
+      });
+    settagdata(alltagdata)
   };
   const [foodname, setfoodname] = React.useState(null);
+  const [tag, settag] = React.useState(null);
+  const [discount, setdiscount] = React.useState(null);
   const [price, setprice] = React.useState(null);
   const [offerprice, setofferprice] = React.useState(null);
   const [quantity, setquantity] = React.useState(null);
@@ -166,6 +175,8 @@ const Menu = () => {
       setfoodid(single[0].id);
       handleOpen();
       seteditoption(true);
+      settag(single[0].tag)
+      setdiscount(single[0].discount)
     }
   };
   const updatebtn = async () => {
@@ -176,8 +187,8 @@ const Menu = () => {
     var quantity = document.getElementById("quantity").value;
     var type = document.getElementById("type").value;
     var categoryvalue = document.getElementById("category").value;
-    // var tag = document.getElementById("tag").value
-    // var discount = document.getElementById("discount").value
+    var tag = document.getElementById("tag").value
+    var discount = document.getElementById("discount").value
     if (file !== null) {
       let file11 = new Promise((resolve, reject) => {
         var storageRef = firebase.storage().ref("profile/" + file[0].name);
@@ -204,8 +215,8 @@ const Menu = () => {
       type: type === "Veg" ? 0 : 1,
       foodimg: imgurl === undefined ? url : imgurl,
       category: categoryvalue === "Select Category" ? category : categoryvalue,
-      tag: null,
-      discount: null,
+      tag: tag,
+      discount: discount,
       id: foodid,
     };
     var createcategory = await axios
@@ -279,63 +290,63 @@ const Menu = () => {
           <TableBody className="Menu_table_body">
             {menudata.length !== 0
               ? menudata.map((data, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell align="center" component="th" scope="row">
-                      {index + 1}
-                    </TableCell>
+                <TableRow
+                  key={index}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="center" component="th" scope="row">
+                    {index + 1}
+                  </TableCell>
 
-                    <TableCell align="center">
-                      <center>
+                  <TableCell align="center">
+                    <center>
+                      <Avatar
+                        className="Category_table_img"
+                        src={data.foodimg}
+                      ></Avatar>
+                    </center>
+                  </TableCell>
+                  <TableCell align="center">{data.category}</TableCell>
+                  <TableCell align="center">{data.foodname}</TableCell>
+                  <TableCell align="center">{data.price}</TableCell>
+                  {/* <TableCell align="center">{data.offerprice}</TableCell> */}
+                  <TableCell align="center">{data.quantity}</TableCell>
+
+                  <TableCell align="center">
+                    <center>
+                      <div className="Category_actions">
                         <Avatar
-                          className="Category_table_img"
-                          src={data.foodimg}
-                        ></Avatar>
-                      </center>
-                    </TableCell>
-                    <TableCell align="center">{data.category}</TableCell>
-                    <TableCell align="center">{data.foodname}</TableCell>
-                    <TableCell align="center">{data.price}</TableCell>
-                    {/* <TableCell align="center">{data.offerprice}</TableCell> */}
-                    <TableCell align="center">{data.quantity}</TableCell>
-
-                    <TableCell align="center">
-                      <center>
-                        <div className="Category_actions">
-                          <Avatar
+                          id={data.id}
+                          onClick={viewMore}
+                          className="Menu_view_avatar"
+                        >
+                          <MoreHorizIcon id={data.id} />
+                        </Avatar>
+                        <Avatar
+                          className="Category_edit_avatar"
+                          id={data.id}
+                          onClick={editbtn}
+                        >
+                          <ModeEditOutlinedIcon
+                            className="Category_edit_icon"
                             id={data.id}
-                            onClick={viewMore}
-                            className="Menu_view_avatar"
-                          >
-                            <MoreHorizIcon id={data.id} />
-                          </Avatar>
-                          <Avatar
-                            className="Category_edit_avatar"
+                          />
+                        </Avatar>
+                        <Avatar
+                          className="Menu_delete_avatar"
+                          id={data.id}
+                          onClick={deletebtn}
+                        >
+                          <DeleteOutlineIcon
+                            className="Category_delete_icon"
                             id={data.id}
-                            onClick={editbtn}
-                          >
-                            <ModeEditOutlinedIcon
-                              className="Category_edit_icon"
-                              id={data.id}
-                            />
-                          </Avatar>
-                          <Avatar
-                            className="Menu_delete_avatar"
-                            id={data.id}
-                            onClick={deletebtn}
-                          >
-                            <DeleteOutlineIcon
-                              className="Category_delete_icon"
-                              id={data.id}
-                            />
-                          </Avatar>
-                        </div>
-                      </center>
-                    </TableCell>
-                  </TableRow>
-                ))
+                          />
+                        </Avatar>
+                      </div>
+                    </center>
+                  </TableCell>
+                </TableRow>
+              ))
               : null}
           </TableBody>
         </Table>
@@ -366,10 +377,10 @@ const Menu = () => {
                   <option>Select Category</option>
                   {categorydata.length !== 0
                     ? categorydata.map((data, index) => (
-                        <option value={data.name} key={index}>
-                          {data.name}
-                        </option>
-                      ))
+                      <option value={data.name} key={index}>
+                        {data.name}
+                      </option>
+                    ))
                     : null}
                 </select>
               </div>
@@ -382,9 +393,22 @@ const Menu = () => {
                 </select>
               </div>
               <div className="Menu_inputs_container">
+                <label>Food Type</label>
+                <select className="form-control" id="tag">
+                  <option>Select Tag</option>
+                  {tagdata.length !== 0
+                    ? tagdata.map((data, index) => (
+                      <option value={data.tag} key={index}>
+                        {data.tag}
+                      </option>
+                    ))
+                    : null}
+                </select>
+              </div>
+              <div className="Menu_inputs_container">
                 <label>Food Name</label>
                 <input
-                  placeholder="Enter the category name"
+                  placeholder="Enter the Food Name"
                   defaultValue={foodname}
                   id="foodname"
                 />
@@ -392,7 +416,7 @@ const Menu = () => {
               <div className="Menu_inputs_container">
                 <label>Food Price</label>
                 <input
-                  placeholder="Enter the category name"
+                  placeholder="Enter the Food Price"
                   defaultValue={price}
                   id="price"
                 />
@@ -400,15 +424,23 @@ const Menu = () => {
               <div className="Menu_inputs_container">
                 <label>Food Offer Price</label>
                 <input
-                  placeholder="Enter the category name"
+                  placeholder="Enter the Food Offer Price"
                   defaultValue={offerprice}
                   id="offerprice"
                 />
               </div>
               <div className="Menu_inputs_container">
+                <label>Food Discount</label>
+                <input
+                  placeholder="Enter the Food Discount"
+                  defaultValue={discount}
+                  id="discount"
+                />
+              </div>
+              <div className="Menu_inputs_container">
                 <label>Food Quantity</label>
                 <input
-                  placeholder="Enter the category name"
+                  placeholder="Enter the Food Quantity"
                   defaultValue={quantity}
                   id="quantity"
                 />
@@ -457,94 +489,94 @@ const Menu = () => {
         <Box sx={style1}>
           {singlemenudata.length !== 0
             ? singlemenudata.map((data, index) => (
-                <div className="Menuview_container" key={index}>
-                  <center>
-                    <img src={logo} alt="balken" />
-                  </center>
-                  <center>
-                    <h1 className="MenuView_head">{data.foodname} </h1>
-                  </center>
-                  <div>
-                    <TableContainer component={Paper}>
-                      <Table aria-label="simple table">
-                        <TableBody>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell> Image</TableCell>
-                            <TableCell>
-                              <Avatar src={data.foodimg}></Avatar>
-                            </TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell> Category</TableCell>
-                            <TableCell>{data.category}</TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell> Type</TableCell>
-                            <TableCell>
-                              {data.type === true ? "Veg" : "Non-Veg"}
-                            </TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell> Tag</TableCell>
-                            <TableCell>{data.tag}</TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell> Actual Price</TableCell>
-                            <TableCell>{data.price} /-</TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell> Offer Price</TableCell>
-                            <TableCell>{data.offerprice} /-</TableCell>
-                          </TableRow>
+              <div className="Menuview_container" key={index}>
+                <center>
+                  <img src={logo} alt="balken" />
+                </center>
+                <center>
+                  <h1 className="MenuView_head">{data.foodname} </h1>
+                </center>
+                <div>
+                  <TableContainer component={Paper}>
+                    <Table aria-label="simple table">
+                      <TableBody>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell> Image</TableCell>
+                          <TableCell>
+                            <Avatar src={data.foodimg}></Avatar>
+                          </TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell> Category</TableCell>
+                          <TableCell>{data.category}</TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell> Type</TableCell>
+                          <TableCell>
+                            {data.type === true ? "Veg" : "Non-Veg"}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell> Tag</TableCell>
+                          <TableCell>{data.tag}</TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell> Actual Price</TableCell>
+                          <TableCell>{data.price} /-</TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell> Offer Price</TableCell>
+                          <TableCell>{data.offerprice} /-</TableCell>
+                        </TableRow>
 
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell> Added on</TableCell>
-                            <TableCell>
-                              {moment(data.createdAt).format("DD MMMM YYYY")}
-                            </TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell> Description</TableCell>
-                            <TableCell>{data.description}</TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                  </div>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell> Added on</TableCell>
+                          <TableCell>
+                            {moment(data.createdAt).format("DD MMMM YYYY")}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell> Description</TableCell>
+                          <TableCell>{data.description}</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </div>
-              ))
+              </div>
+            ))
             : null}
         </Box>
       </Modal>

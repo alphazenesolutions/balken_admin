@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import "../../Assests/css/Home.css";
 import axios from "axios";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 const Tdy_spcl = () => {
   const [spcl_1, setspcl_1] = useState(false);
   const [spcl_2, setspcl_2] = useState(false);
@@ -64,13 +65,40 @@ const Tdy_spcl = () => {
 
   }
   const getfoodinfo = async (e) => {
-    var data = {
-      item: e.target.id
+    if (myfooditem.length === 4) {
+      alert("Today's Special Allowed Only 4")
     }
-    var createmenu = await axios.post(`${process.env.REACT_APP_SERVER}/todayspl/create`, data).then((res) => { return res.data })
-    if (createmenu !== null) {
-      window.location.reload()
+    else {
+      var data = {
+        item: e.target.id
+      }
+      var createmenu = await axios.post(`${process.env.REACT_APP_SERVER}/todayspl/create`, data).then((res) => { return res.data })
+      if (createmenu !== null) {
+        window.location.reload()
+      }
     }
+  }
+  const deletebtn = async (e) => {
+    var todaymenu = await axios
+      .get(`${process.env.REACT_APP_SERVER}/todayspl/viewall`)
+      .then((res) => {
+        return res.data;
+      });
+    var singlefood = await todaymenu.filter((data) => { return data.item === e.target.id })
+    if (singlefood.length !== 0) {
+      var data = {
+        testtid: singlefood[0].id,
+      };
+      var deletemenu = await axios
+        .post(`${process.env.REACT_APP_SERVER}/todayspl/destroy`, data)
+        .then((res) => {
+          return res.data;
+        });
+      if (deletemenu !== null) {
+        window.location.reload();
+      }
+    }
+
   }
   return (
     <div>
@@ -154,6 +182,16 @@ const Tdy_spcl = () => {
         <div className="HomeSpecialCards">
           {myfooditem.length !== 0 ? myfooditem.map((data) => (
             <Card sx={{ maxWidth: 255 }} className="HomeSpecialCard">
+              <Avatar
+                className="Category_delete_avatar" style={{ position: "absolute", margin: "5px",zIndex:"1000" }}
+                id={data.foodid}
+                onClick={deletebtn}
+              >
+                <DeleteOutlineIcon
+                  className="Category_delete_icon"
+                  id={data.foodid}
+                />
+              </Avatar>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -179,6 +217,7 @@ const Tdy_spcl = () => {
                   </center>
                 </CardContent>
               </CardActionArea>
+              
             </Card>
           )) : null}
         </div>

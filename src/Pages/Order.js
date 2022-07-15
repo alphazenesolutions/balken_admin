@@ -124,14 +124,14 @@ const Userlist = () => {
           <TableBody>
             {userlist.length !== 0
               ? userlist.map((data, index) => (
-                  <TableRow>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>{data.order.foodname}</TableCell>
-                    <TableCell>{data.order.price}</TableCell>
-                    {/* <TableCell>{data.order.quantity}</TableCell> */}
-                    <TableCell>{data.info.name}</TableCell>
-                    <TableCell>{data.order.status}</TableCell>
-                    {/* <TableCell>
+                <TableRow>
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell>{data.order.foodname}</TableCell>
+                  <TableCell>{data.order.price}</TableCell>
+                  {/* <TableCell>{data.order.quantity}</TableCell> */}
+                  <TableCell>{data.info.name}</TableCell>
+                  <TableCell>{data.order.status}</TableCell>
+                  {/* <TableCell>
                       {data.order.status === "Cancel" ||
                       data.order.status === "Delivery" ? null : (
                         <select
@@ -146,82 +146,82 @@ const Userlist = () => {
                       )}
                     </TableCell> */}
 
-                    <TableCell>
-                      <center>
-                        <div className="Order_actions">
-                          {data.order.status === "Cancel" ||
+                  <TableCell>
+                    <center>
+                      <div className="Order_actions">
+                        {data.order.status === "Cancel" ||
                           data.order.status === "Delivery" ? (
-                            <>
-                              <Avatar
+                          <>
+                            <Avatar
+                              id={data.order.id}
+                              onClick={viewMore}
+                              className="Order_view_avatar"
+                            >
+                              <MoreHorizIcon
+                                className="Order_view_icon"
                                 id={data.order.id}
-                                onClick={viewMore}
-                                className="Order_view_avatar"
-                              >
-                                <MoreHorizIcon
-                                  className="Order_view_icon"
-                                  id={data.order.id}
-                                />
-                              </Avatar>
-                              <Avatar
-                                className="Order_edit_avatar"
+                              />
+                            </Avatar>
+                            <Avatar
+                              className="Order_edit_avatar"
+                              id={data.order.id}
+                            >
+                              <DeliveryDiningIcon
+                                className="Order_edit_icon"
                                 id={data.order.id}
-                              >
-                                <DeliveryDiningIcon
-                                  className="Order_edit_icon"
-                                  id={data.order.id}
-                                />
-                              </Avatar>
-                              <Avatar
-                                className="Order_delete_avatar"
+                              />
+                            </Avatar>
+                            <Avatar
+                              className="Order_delete_avatar"
+                              id={data.order.id}
+                            >
+                              <CloseIcon
+                                className="Order_delete_icon"
                                 id={data.order.id}
-                              >
-                                <CloseIcon
-                                  className="Order_delete_icon"
-                                  id={data.order.id}
-                                />
-                              </Avatar>
-                            </>
-                          ) : (
-                            <>
-                              <Avatar
+                              />
+                            </Avatar>
+                          </>
+                        ) : (
+                          <>
+                            <Avatar
+                              id={data.order.id}
+                              onClick={viewMore}
+                              className="Order_view_avatar"
+                            >
+                              <MoreHorizIcon
+                                className="Order_view_icon"
                                 id={data.order.id}
-                                onClick={viewMore}
-                                className="Order_view_avatar"
-                              >
-                                <MoreHorizIcon
-                                  className="Order_view_icon"
-                                  id={data.order.id}
-                                />
-                              </Avatar>
-                              <Avatar
-                                className="Order_edit_avatar"
+                              />
+                            </Avatar>
+                            <Avatar
+                              className="Order_edit_avatar"
+                              id={data.order.id}
+                              onClick={changestatus}
+                            >
+                              <DeliveryDiningIcon
+                                className="Order_edit_icon"
                                 id={data.order.id}
                                 onClick={changestatus}
-                              >
-                                <DeliveryDiningIcon
-                                  className="Order_edit_icon"
-                                  id={data.order.id}
-                                  onClick={changestatus}
-                                />
-                              </Avatar>
-                              <Avatar
-                                className="Order_delete_avatar"
+                              />
+                            </Avatar>
+                            <Avatar
+                              className="Order_delete_avatar"
+                              id={data.order.id}
+                              onClick={changestatuscancel}
+                            >
+                              <CloseIcon
+                                className="Order_delete_icon"
                                 id={data.order.id}
                                 onClick={changestatuscancel}
-                              >
-                                <CloseIcon
-                                  className="Order_delete_icon"
-                                  id={data.order.id}
-                                  onClick={changestatuscancel}
-                                />
-                              </Avatar>
-                            </>
-                          )}
-                        </div>
-                      </center>
-                    </TableCell>
-                  </TableRow>
-                ))
+                              />
+                            </Avatar>
+                          </>
+                        )}
+                      </div>
+                    </center>
+                  </TableCell>
+                </TableRow>
+              ))
               : null}
           </TableBody>
         </Table>
@@ -235,105 +235,105 @@ const Userlist = () => {
         <Box sx={style}>
           {singleuser.length !== 0
             ? singleuser.map((data, index) => (
-                <div className="orderview_container" key={index}>
-                  <center>
-                    <img src={logo} alt="balken" />
-                  </center>
-                  <center>
-                    <h1 className="orderview_head">
-                      {data.info.name}'s Order{" "}
-                    </h1>
-                  </center>
-                  <div>
-                    <TableContainer component={Paper}>
-                      <Table aria-label="simple table">
-                        <TableBody>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell>Food Name</TableCell>
-                            <TableCell>{data.order.foodname}</TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell>Quantity</TableCell>
-                            <TableCell>{data.order.quantity}</TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell>Price</TableCell>
-                            <TableCell>{data.order.price} /-</TableCell>
-                          </TableRow>
-                          {data.order.status === "Delivery" ||
+              <div className="orderview_container" key={index}>
+                <center>
+                  <img src={logo} alt="balken" />
+                </center>
+                <center>
+                  <h1 className="orderview_head">
+                    {data.info.name}'s Order{" "}
+                  </h1>
+                </center>
+                <div>
+                  <TableContainer component={Paper}>
+                    <Table aria-label="simple table">
+                      <TableBody>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell>Food Name</TableCell>
+                          <TableCell>{data.order.foodname}</TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell>Quantity</TableCell>
+                          <TableCell>{data.order.quantity}</TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell>Price</TableCell>
+                          <TableCell>{data.order.price} /-</TableCell>
+                        </TableRow>
+                        {data.order.status === "Delivery" ||
                           data.order.status === "Ordered" ? (
-                            <TableRow
-                              sx={{
-                                "&:last-child td, &:last-child th": {
-                                  border: 0,
-                                },
-                              }}
-                            >
-                              <TableCell>Status</TableCell>
-                              <TableCell>
-                                <Avatar className="Order_delivered_status">
-                                  <TagFacesIcon />
-                                </Avatar>
-                                {/* <span className="Order_delivered_status">
+                          <TableRow
+                            sx={{
+                              "&:last-child td, &:last-child th": {
+                                border: 0,
+                              },
+                            }}
+                          >
+                            <TableCell>Status</TableCell>
+                            <TableCell>
+                              <Avatar className="Order_delivered_status">
+                                <TagFacesIcon />
+                              </Avatar>
+                              {/* <span className="Order_delivered_status">
                           Delivered
                         </span> */}
-                              </TableCell>
-                            </TableRow>
-                          ) : null}
-                          {data.order.status === "Cancel" ? (
-                            <TableRow
-                              sx={{
-                                "&:last-child td, &:last-child th": {
-                                  border: 0,
-                                },
-                              }}
-                            >
-                              <TableCell>Status</TableCell>
-                              <TableCell>
-                                <Avatar className="Order_Cancel_status">
-                                  <SentimentVeryDissatisfiedIcon />
-                                </Avatar>
-                                {/* <span className="Order_delivered_status">
+                            </TableCell>
+                          </TableRow>
+                        ) : null}
+                        {data.order.status === "Cancel" ? (
+                          <TableRow
+                            sx={{
+                              "&:last-child td, &:last-child th": {
+                                border: 0,
+                              },
+                            }}
+                          >
+                            <TableCell>Status</TableCell>
+                            <TableCell>
+                              <Avatar className="Order_Cancel_status">
+                                <SentimentVeryDissatisfiedIcon />
+                              </Avatar>
+                              {/* <span className="Order_delivered_status">
                             Delivered
                           </span> */}
-                              </TableCell>
-                            </TableRow>
-                          ) : null}
+                            </TableCell>
+                          </TableRow>
+                        ) : null}
 
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell>Customer E-mail</TableCell>
-                            <TableCell>{data.info.email}</TableCell>
-                          </TableRow>
-                          <TableRow
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                            }}
-                          >
-                            <TableCell>Customer Phone</TableCell>
-                            <TableCell>{data.info.phone}</TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                  </div>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell>Customer E-mail</TableCell>
+                          <TableCell>{data.info.email}</TableCell>
+                        </TableRow>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell>Customer Phone</TableCell>
+                          <TableCell>{data.info.phone}</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </div>
-              ))
+              </div>
+            ))
             : null}
         </Box>
       </Modal>
